@@ -70,8 +70,8 @@ public class BookController {
     }
 
     @GetMapping("/genero/{genre}")
-    public ResponseEntity<Optional<Book>> getBooksByGenre(@PathVariable Genre genre) {
-        Optional<Book> books = bookRepository.findByGenre(genre);
+    public ResponseEntity<Optional<Book>> getBooksByGenre(@PathVariable String genre) {
+        Optional<Book> books = bookRepository.findByGenreIgnoreCase(genre);
 
         if (books.isEmpty()) {
             return ResponseEntity.noContent().build();
